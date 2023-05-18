@@ -31,10 +31,6 @@ const NavBar = () => {
         <li><Link to='/register'>Register</Link></li>
         <li><button onClick={handleLogOut}>LogOut</button></li>
 
-
-
-
-
     </>
 
     return (
