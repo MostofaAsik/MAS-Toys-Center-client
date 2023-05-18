@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 import { AuthContext } from '../../Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const [error, setError] = useState('')
@@ -33,12 +34,25 @@ const Register = () => {
                 form.reset()
                 logOut()
                 navigate('/login')
+                updateUserProfile(createdUser, name, photo)
 
             })
             .catch(error => {
                 console.log(error.message)
             })
 
+    }
+
+    const updateUserProfile = (user, name, photo) => {
+        updateProfile(user, {
+            displayName: name, photoURL: photo
+        })
+            .then(() => {
+                console.log("User Update Succesfully");
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
@@ -62,13 +76,13 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" name="name" placeholder="name" className="input input-bordered" />
+                                <input type="text" name="name" placeholder="name" className="input input-bordered" required />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">PhotoUrl</span>
                                 </label>
-                                <input type="text" name='photo' placeholder="Url" className="input input-bordered" />
+                                <input type="text" name='photo' placeholder="Url" className="input input-bordered" required />
 
                             </div>
 
@@ -76,14 +90,14 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="Email" className="input input-bordered" />
+                                <input type="email" name='email' placeholder="Email" className="input input-bordered" required />
 
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="Password" className="input input-bordered" />
+                                <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
 
                             </div>
 
