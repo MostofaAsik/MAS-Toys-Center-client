@@ -8,6 +8,9 @@ const NavBar = () => {
         <li><Link>Home</Link></li>
         <li><Link>Blogs</Link></li>
         <li><Link>All Toys</Link></li>
+        <li><Link>LogIn</Link></li>
+        <li><Link>Register</Link></li>
+
 
 
     </>
@@ -25,9 +28,9 @@ const NavBar = () => {
                         {nav}
                     </ul>
                 </div>
-                <img className='w-20 h-20 p-4' src="https://rukminim1.flixcart.com/image/416/416/k5pn6vk0/vehicle-pull-along/9/f/p/lamborghini-centenario-1-32-scale-diecast-metal-alloy-pull-back-original-imafgtwjp7mnnahh.jpeg?q=70" alt="" />
+                <img className='w-20 h-20 p-4 rounded-full' src="https://rukminim1.flixcart.com/image/416/416/k5pn6vk0/vehicle-pull-along/9/f/p/lamborghini-centenario-1-32-scale-diecast-metal-alloy-pull-back-original-imafgtwjp7mnnahh.jpeg?q=70" alt="" />
                 <div className=''>
-                    <h2 className='text-2xl md:text-4xl text-indigo-700'>MAS TOYS CENTER</h2>
+                    <h2 className='text-2xl md:text-4xl text-indigo-700 hover:bg-gradient-to-r from-[#c33634] to-[#48c334] '>MAS TOYS CENTER</h2>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
