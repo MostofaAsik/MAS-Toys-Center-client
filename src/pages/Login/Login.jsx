@@ -1,10 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { FaArrowDown, FaGoogle, } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
+    const { logIn } = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
 
     const handleLogin = (event) => {
@@ -13,6 +18,19 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
         console.log(email, password);
+        setSuccess('')
+        logIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setSuccess("Successfully Login")
+                setError('')
+                form.reset()
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError("Email and Password does not match")
+            })
 
     }
 
@@ -30,6 +48,8 @@ const Register = () => {
                 </div>
                 <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
+                        <p className='mb-2 text-red-600'> {error}</p>
+                        <p className='mb-2 text-red-600'> {success}</p>
                         <form onSubmit={handleLogin}>
 
                             <div className="form-control">

@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
-    const { createdUser } = useContext(AuthContext)
+    const { createdUser, logOut } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleRegister = (event) => {
         event.preventDefault()
@@ -30,6 +31,9 @@ const Register = () => {
                 setSuccess("You are succesfull created an account")
                 setError('')
                 form.reset()
+                logOut()
+                navigate('/login')
+
             })
             .catch(error => {
                 console.log(error.message)
