@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 
 const Register = () => {
-
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
     const handleRegister = (event) => {
         event.preventDefault()
@@ -14,6 +15,11 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
         console.log(name, photo, email, password);
+
+        if (password.length < 6) {
+            setError('Password minimum  6 charecters')
+        }
+        setSuccess('')
 
     }
 
@@ -31,6 +37,11 @@ const Register = () => {
                 </div>
                 <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
+
+
+
+
+
                         <form onSubmit={handleRegister}>
                             <div className="form-control">
                                 <label className="label">
