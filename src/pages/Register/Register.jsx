@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
+    const { createdUser } = useContext(AuthContext)
 
     const handleRegister = (event) => {
         event.preventDefault()
@@ -20,6 +22,18 @@ const Register = () => {
             setError('Password minimum  6 charecters')
         }
         setSuccess('')
+
+        createdUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser)
+                setSuccess("You are succesfull created an account")
+                setError('')
+                form.reset()
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
 
     }
 
@@ -37,11 +51,8 @@ const Register = () => {
                 </div>
                 <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-
-
-
-
-
+                        <p className='mb-2 text-red-600'> {error}</p>
+                        <p className='mb-2 text-red-600'> {success}</p>
                         <form onSubmit={handleRegister}>
                             <div className="form-control">
                                 <label className="label">
