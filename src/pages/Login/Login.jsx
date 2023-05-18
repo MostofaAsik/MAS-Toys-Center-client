@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
-    const { logIn } = useContext(AuthContext)
+    const { logIn, googleLogin } = useContext(AuthContext)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
@@ -32,6 +32,17 @@ const Register = () => {
                 setError("Email and Password does not match")
             })
 
+    }
+
+    const handleGoogleLogIn = () => {
+        googleLogin()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
@@ -76,7 +87,7 @@ const Register = () => {
                         </div>
                         <div className='text-center'>
                             <h2>Google Login</h2>
-                            <button className="btn btn-circle hover:bg-[#a32323]">
+                            <button onClick={handleGoogleLogIn} className="btn btn-circle hover:bg-[#a32323]">
                                 <FaGoogle></FaGoogle>
                             </button>
                         </div>
