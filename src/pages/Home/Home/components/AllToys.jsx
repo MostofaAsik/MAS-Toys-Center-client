@@ -13,7 +13,7 @@ const AllToys = () => {
             })
     }, [])
 
-    console.log("from allToys", allToys);
+
     return (
         <div className='bg-gradient-to-r from-[#871010] to-[#4e2c13] p-4'>
             <h2 className='text-center text-white text-2xl font bold mb-2'>Total Toys :{allToys.length}</h2>

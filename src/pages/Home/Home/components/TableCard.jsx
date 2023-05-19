@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TableCard = ({ toy }) => {
 
@@ -31,7 +32,9 @@ const TableCard = ({ toy }) => {
             <td>{"$" + price}</td>
             <td>{quantity}</td>
             <th>
-                <button className="btn btn-success btn-xs">details</button>
+                <Link to={`/toy/${_id}`}>
+                    <button className="btn btn-success btn-xs">details</button>
+                </Link>
             </th>
         </tr>
     );
