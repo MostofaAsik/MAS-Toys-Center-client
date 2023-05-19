@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import MyToy from './MyToy';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -17,6 +18,8 @@ const MyToys = () => {
     }, [user])
 
     console.log(myToys);
+
+
 
     return (
         <div className='bg-gradient-to-r from-[#871010] to-[#4e2c13] p-4'>
