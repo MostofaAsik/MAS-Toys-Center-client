@@ -23,8 +23,8 @@ const Category = () => {
         setTab(subCategory)
     }
 
-    console.log("category", category);
-    console.log("tab", tab);
+    // console.log("category", category);
+    // console.log("tab", tab);
     return (
         <div className='bg-gradient-to-r from-[#805858] to-[#5b9f76] p-4'>
             <h2 className='text-center text-3xl mt-2 mb-2'> Categorywise Toys</h2>
