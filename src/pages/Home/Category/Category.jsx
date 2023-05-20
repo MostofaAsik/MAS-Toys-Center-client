@@ -11,7 +11,7 @@ const Category = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all/${tab}`)
+        fetch(`https://toys-server-mostofaasik.vercel.app/all/${tab}`)
             .then(res => res.json())
             .then(data => {
                 setCategory(data)
