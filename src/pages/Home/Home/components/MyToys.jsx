@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import MyToy from './MyToy';
 import Swal from 'sweetalert2';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -55,44 +56,49 @@ const MyToys = () => {
 
 
     return (
-        <div className='bg-gradient-to-r from-[#871010] to-[#4e2c13] p-4'>
-            <h2 className='text-center mb-2 hover:text-white'>MyToys:{myToys.length}</h2>
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
+        <HelmetProvider>
+            <Helmet>
+                <title>MyToys-{"MAS Toys Center"}</title>
+            </Helmet>
+            <div className='bg-gradient-to-r from-[#871010] to-[#4e2c13] p-4'>
+                <h2 className='text-center mb-2 hover:text-white'>MyToys:{myToys.length}</h2>
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead>
+                            <tr>
 
 
-                            <th>Seller</th>
-                            <th>Toy image and Name </th>
-                            <th>Sub Category</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                                <th>Seller</th>
+                                <th>Toy image and Name </th>
+                                <th>Sub Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        {
-                            myToys.map(toy => <MyToy
-                                key={toy._id}
-                                toy={toy}
-                                handleDelete={handleDelete}
-                            ></MyToy>)
-                        }
-
-
-
-
-                    </tbody>
+                            {
+                                myToys.map(toy => <MyToy
+                                    key={toy._id}
+                                    toy={toy}
+                                    handleDelete={handleDelete}
+                                ></MyToy>)
+                            }
 
 
 
-                </table>
+
+                        </tbody>
+
+
+
+                    </table>
+                </div>
             </div>
-        </div>
+        </HelmetProvider>
     );
 };
 
