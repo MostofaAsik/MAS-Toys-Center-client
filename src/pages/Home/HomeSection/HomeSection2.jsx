@@ -1,13 +1,26 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import pic1 from '../../../assets/images/16 .jpeg'
 import pic2 from '../../../assets/images/17.jpeg'
 import pic3 from '../../../assets/images/18.jpeg'
 import pic4 from '../../../assets/images/19.jpeg'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const HomeSection2 = () => {
+
+    useEffect(() => {
+        AOS.init({
+            delay: 200,
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false
+        })
+    }, [])
+
     return (
-        <div className=" py-10 px-10 bg-gradient-to-r from-purple-500 to-pink-500">
+        <div className=" py-10 px-10 bg-gradient-to-r from-purple-500 to-pink-500" data-aos="fade-up-left">
             <div className="container mx-auto">
                 <h2 className="text-2xl font-bold mb-6 text-center "> UpComing Exploring Soon</h2>
                 <div className="flex flex-wrap -mx-4">

@@ -3,11 +3,22 @@ import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ToyCard from '../Home/components/ToyCard';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Category = () => {
 
     const [category, setCategory] = useState([])
     const [tab, setTab] = useState('car')
+
+    useEffect(() => {
+        AOS.init({
+            delay: 200,
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false
+        })
+    }, [])
 
 
     useEffect(() => {
@@ -26,7 +37,7 @@ const Category = () => {
     // console.log("category", category);
     // console.log("tab", tab);
     return (
-        <div className='bg-gradient-to-r from-[#805858] to-[#5b9f76] p-4'>
+        <div className='bg-gradient-to-r from-[#805858] to-[#5b9f76] p-4' data-aos="fade-up">
             <h2 className='text-center text-3xl mt-2 mb-2'> Categorywise Toys</h2>
             <Tabs>
                 <TabList className='text-center mb-3 text-red-900'>

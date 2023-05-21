@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import pic1 from '../../../assets/images/1.jpg'
 import pic2 from '../../../assets/images/2.jpg'
 import pic3 from '../../../assets/images/3.jpg'
@@ -16,10 +16,21 @@ import pic13 from '../../../assets/images/13.jpg'
 import pic14 from '../../../assets/images/14.jpg'
 import pic15 from '../../../assets/images/15.jpg'
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Gallary = () => {
+
+    useEffect(() => {
+        AOS.init({
+            delay: 200,
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false
+        })
+    }, [])
     return (
-        <div className='bg-gradient-to-r from-[#4b4052] to-[#590f0f]'>
+        <div className='bg-gradient-to-r from-[#4b4052] to-[#590f0f]' data-aos="fade-up-right">
             <h1 className='text-center text-3xl font-bold text-white pt-2 mb-2'>Gallary</h1>
             <div className="grid grid-cols-3 gap-4 p-4 ">
                 <div className="bg-gray-200 p-4  hover:animate-bounce origin-bottom-left duration-100 ">

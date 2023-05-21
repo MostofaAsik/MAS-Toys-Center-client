@@ -1,11 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const NavBar = () => {
-    const { user, logOut } = useContext(AuthContext)
-    // console.log(user)
+    const { user, logOut } = useContext(AuthContext);
+
+
+    useEffect(() => {
+        AOS.init({
+            delay: 200,
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false
+        })
+    }, [])
 
     const handleLogOut = () => {
         logOut()
@@ -34,7 +46,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="navbar bg-gradient-to-r from-purple-500 to-pink-500 h-28 ">
+        <div className="navbar bg-gradient-to-r from-purple-500 to-pink-500 h-28 " data-aos="fade-down" >
             <div className="navbar-start ">
                 <div className="dropdown ">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

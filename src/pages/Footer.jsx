@@ -1,9 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const Footer = () => {
+
+    useEffect(() => {
+        AOS.init({
+            delay: 200,
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false
+        })
+    }, [])
+
     return (
-        <footer className="footer footer-center p-10 bg-gradient-to-r from-[#fdbb2d] to-[#202522]  text-primary-content">
+        <footer className="footer footer-center p-10 bg-gradient-to-r from-[#fdbb2d] to-[#202522]  text-primary-content" data-aos="flip-left"
+            data-aos-easing="ease-out-cubic" >
             <div>
                 <img className='w-20 h-20 p-4 rounded-full' src="https://rukminim1.flixcart.com/image/416/416/k5pn6vk0/vehicle-pull-along/9/f/p/lamborghini-centenario-1-32-scale-diecast-metal-alloy-pull-back-original-imafgtwjp7mnnahh.jpeg?q=70" alt="" />
                 <p className="font-bold">

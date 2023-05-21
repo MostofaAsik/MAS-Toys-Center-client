@@ -1,9 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const HomeSection1 = () => {
+
+    useEffect(() => {
+        AOS.init({
+            delay: 200,
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false
+        })
+    }, [])
+
     return (
-        <div className="relative">
+        <div className="relative" data-aos="fade-down-left" >
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col items-center justify-center py-16  bg-gradient-to-r from-[#34073d] to-[#566a53]" >
                     <div className="w-full max-w-md text-center text-rose-700 " >
